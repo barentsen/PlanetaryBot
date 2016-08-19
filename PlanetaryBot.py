@@ -48,7 +48,7 @@ def select_image():
 
 def get_preview_image(observation_id):
     """Download a full-sized preview image for a given observation ID."""
-    metadata_url = ('http://pds-rings-tools.seti.org/opus/api/image/full/'
+    metadata_url = ('http://pds-rings-tools.seti.org/opus/api/image/med/'
                     '{}.json'.format(observation_id))
     jsonstr = urlopen(metadata_url).read().decode('utf-8')
     jsonobj = json.loads(jsonstr)['data'][0]
@@ -80,7 +80,7 @@ def generate_tweet():
     status = ('📷 {}\n'
               '🛰 {}\n'
               '🗓 {}\n'
-              'ℹ {}'.format(target,
+              '🔗 {}'.format(target,
                             mission,
                             isotime[:19].replace('T', ' '),
                             url))
