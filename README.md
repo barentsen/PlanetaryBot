@@ -1,7 +1,8 @@
 # @PlanetaryBot
 
 This repo contains the `PlanetaryBot.py` script that is used
-by @PlanetaryBot to post random, raw images of the Solar System on Twitter.
+by @PlanetaryBot to post random, raw images from the Outer Solar System on Twitter.
+Made possible using the API of the [Ring-Moon Systems Node](http://pds-rings.seti.org/) of NASA's Planetary Data System.
 
 ## Usage
 
