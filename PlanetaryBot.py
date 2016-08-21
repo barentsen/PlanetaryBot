@@ -40,7 +40,8 @@ def select_image():
     # First randomly select a mission to avoid all tweets being from
     # Cassini, which dominates the dataset.
     missions = set(IMAGES['Instrument Host Name'])
-    missions.remove('HST')  # Show images from deep space missions (sorry Hubble)
+    missions.remove('HST')  # Show images from deep space missions only (sorry Hubble)
+    missions.remove('NH')  # New Horizons pre-Pluto data is a bit dull?
     mask_mission = IMAGES['Instrument Host Name'] == random.sample(missions, 1)[0]
     # Having selected a mission, select a random image from that mission
     idx = random.randint(0, mask_mission.sum())
