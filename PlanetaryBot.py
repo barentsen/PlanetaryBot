@@ -21,6 +21,7 @@ from twython import Twython
 from secrets import *
 
 
+# Index of images obtained manually though the OPUS search interface
 IMAGES = pd.read_csv('opus-images.csv')
 
 NICE_MISSION_NAMES = {'VG1': 'Voyager 1',
@@ -38,9 +39,9 @@ def select_image():
     """Select a random image from the PDS Planetary Rings Node."""
     # First randomly select a mission to avoid all tweets being from
     # Cassini, which dominates the dataset.
-    missions = IMAGES['Mission'].unique()
-    idx_mission = random.randint(0, len(missions) - 1)
-    mask_mission = IMAGES['Mission'] == missions[idx_mission]
+    missions = set(IMAGES['Instrument Host Name'])
+    missions.remove('HST')  # Show images from deep space missions (sorry Hubble)
+    mask_mission = IMAGES['Instrument Host Name'] == random.sample(missions, 1)[0]
     # Having selected a mission, select a random image from that mission
     idx = random.randint(0, mask_mission.sum())
     return IMAGES[mask_mission].iloc[idx]
