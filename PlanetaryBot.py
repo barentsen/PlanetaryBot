@@ -84,7 +84,7 @@ def generate_tweet():
               '🗓 {}\n'
               '🔗 {}'.format(target,
                             mission,
-                            isotime[:19].replace('T', ' '),
+                            isotime[:10].replace('T', ' '),
                             url))
     img_path = get_preview_image(img['Ring Observation ID'])
     return (status, img_path)
